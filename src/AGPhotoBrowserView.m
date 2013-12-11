@@ -12,19 +12,21 @@
 #import "AGPhotoBrowserOverlayView.h"
 #import "AGPhotoBrowserZoomableView.h"
 
-
 @interface AGPhotoBrowserView () <
 AGPhotoBrowserOverlayViewDelegate,
 AGPhotoBrowserZoomableViewDelegate,
 UITableViewDataSource,
 UITableViewDelegate,
-UIGestureRecognizerDelegate
+UIGestureRecognizerDelegate,
+CommentsViewControllerDelegate
 > {
 	CGPoint _startingPanPoint;
 	BOOL _wantedFullscreenLayout;
     BOOL _navigationBarWasHidden;
 	CGRect _originalParentViewFrame;
 	NSInteger _currentlySelectedIndex;
+    
+    CommentsViewController * _commentsViewController;
 }
 
 @property (nonatomic, strong, readwrite) UIButton *doneButton;
@@ -237,6 +239,11 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 					 }];
 }
 
+-(void)reloadData
+{
+    
+}
+
 
 #pragma mark - AGPhotoBrowserOverlayViewDelegate
 
@@ -245,6 +252,55 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 	if ([_delegate respondsToSelector:@selector(photoBrowser:didTapOnActionButton:atIndex:)]) {
 		[_delegate photoBrowser:self didTapOnActionButton:actionButton atIndex:_currentlySelectedIndex];
 	}
+    
+    [self showCommentsViewController];
+}
+
+-(void)showCommentsViewController
+{
+    _commentsViewController = [[CommentsViewController alloc]init];
+    _commentsViewController.delegate = self;
+    _commentsViewController.showProfilePictureForUserId = [self.delegate respondsToSelector:@selector(photoBrowser:profileImageForUserId:withCompletionBlock:)];
+    UIView * view = [_commentsViewController view];
+    
+    [view setFrame:self.frame];
+    
+    [self addSubview:[_commentsViewController view]];
+    
+    [_commentsViewController viewWillAppear:NO];
+}
+
+-(NSArray *)commentsViewController:(CommentsViewController *)commentsViewController commentsForImageAtIndex:(NSInteger)index
+{
+    if([self.delegate respondsToSelector:@selector(photoBrowser:commentsForImageAtIndex:)]){
+        return [self.delegate photoBrowser:self commentsForImageAtIndex:index];
+    }
+    
+    return nil;
+}
+
+-(void)commentsViewController:(CommentsViewController *)commentsViewController
+        profileImageForUserId:(NSString *)userId
+          withCompletionBlock:(void (^)(UIImage *))block
+{
+    if([self.delegate respondsToSelector:@selector(photoBrowser:profileImageForUserId:withCompletionBlock:)])
+    {
+        return [self.delegate photoBrowser:self profileImageForUserId:userId withCompletionBlock:block];
+    }
+}
+
+-(void)commentsViewController:(CommentsViewController *)commentsViewController didMakeComment:(NSString *)comment
+{
+    if([self.delegate respondsToSelector:@selector(photoBrowser:didMakeComment:)])
+    {
+        [self.delegate photoBrowser:self didMakeComment:comment];
+    }
+}
+
+-(void)commentsViewControllerDidCancel:(CommentsViewController *)commentsViewController
+{
+    [[_commentsViewController view]removeFromSuperview];
+    _commentsViewController = nil;
 }
 
 - (void)sharingView:(AGPhotoBrowserOverlayView *)sharingView didTapOnSeeMoreButton:(UIButton *)actionButton

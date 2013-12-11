@@ -10,7 +10,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-
 @interface AGPhotoBrowserOverlayView () {
 	BOOL _animated;
 	CAGradientLayer *_gradientLayer;

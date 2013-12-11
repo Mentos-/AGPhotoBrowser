@@ -10,6 +10,7 @@
 
 #import "AGPhotoBrowserDelegate.h"
 #import "AGPhotoBrowserDataSource.h"
+#import "CommentsViewController.h"
 
 @interface AGPhotoBrowserView : UIView
 
@@ -21,5 +22,7 @@
 - (void)show;
 - (void)showFromIndex:(NSInteger)initialIndex;
 - (void)hideWithCompletion:( void (^) (BOOL finished) )completionBlock;
+
+- (void)reloadData;
 
 @end

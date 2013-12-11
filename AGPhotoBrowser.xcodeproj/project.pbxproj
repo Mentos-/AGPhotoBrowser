@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B9811051858B44B00F04489 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9810FF1858B44B00F04489 /* CommentsViewController.m */; };
+		0B9811061858B44B00F04489 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811001858B44B00F04489 /* CommentsViewController.xib */; };
+		0B9811081858B44B00F04489 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9811041858B44B00F04489 /* CommentTableViewCell.m */; };
+		0B98110B1858B74E00F04489 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B98110A1858B74E00F04489 /* Comment.m */; };
+		0B98110E1858BB8100F04489 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B98110D1858BB8100F04489 /* NSDate+HumanizedTime.m */; };
+		0B9811111858BB8900F04489 /* Localizable_full.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B98110F1858BB8900F04489 /* Localizable_full.strings */; };
+		0B9811121858BB8900F04489 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811101858BB8900F04489 /* Localizable.strings */; };
+		0B9811151858C9EB00F04489 /* send-grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811131858C9EB00F04489 /* send-grey@2x.png */; };
+		0B9811161858C9EB00F04489 /* send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811141858C9EB00F04489 /* send@2x.png */; };
+		0B98111F1858CDF000F04489 /* comment-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B98111D1858CDF000F04489 /* comment-line@2x.png */; };
+		0B9811201858CDF000F04489 /* comment-tail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B98111E1858CDF000F04489 /* comment-tail@2x.png */; };
+		0B9811221858CE0600F04489 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811211858CE0600F04489 /* done@2x.png */; };
+		0B9811241858D63D00F04489 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9811231858D63D00F04489 /* CoreText.framework */; };
 		8D3D8ABC184202DE00154B6B /* AGPhotoBrowserZoomableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3D8ABB184202DE00154B6B /* AGPhotoBrowserZoomableView.m */; };
 		DE2A3D7A17A575C700CE0CA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE2A3D7917A575C700CE0CA5 /* UIKit.framework */; };
 		DE2A3D7C17A575C700CE0CA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE2A3D7B17A575C700CE0CA5 /* Foundation.framework */; };
@@ -44,6 +57,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B9810FE1858B44B00F04489 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		0B9810FF1858B44B00F04489 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		0B9811001858B44B00F04489 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
+		0B9811031858B44B00F04489 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		0B9811041858B44B00F04489 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		0B9811091858B74E00F04489 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		0B98110A1858B74E00F04489 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		0B98110C1858BB8100F04489 /* NSDate+HumanizedTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HumanizedTime.h"; sourceTree = "<group>"; };
+		0B98110D1858BB8100F04489 /* NSDate+HumanizedTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HumanizedTime.m"; sourceTree = "<group>"; };
+		0B98110F1858BB8900F04489 /* Localizable_full.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable_full.strings; sourceTree = "<group>"; };
+		0B9811101858BB8900F04489 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		0B9811131858C9EB00F04489 /* send-grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-grey@2x.png"; sourceTree = "<group>"; };
+		0B9811141858C9EB00F04489 /* send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send@2x.png"; sourceTree = "<group>"; };
+		0B98111D1858CDF000F04489 /* comment-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-line@2x.png"; sourceTree = "<group>"; };
+		0B98111E1858CDF000F04489 /* comment-tail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-tail@2x.png"; sourceTree = "<group>"; };
+		0B9811211858CE0600F04489 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
+		0B9811231858D63D00F04489 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		8D3D8ABA184202DE00154B6B /* AGPhotoBrowserZoomableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserZoomableView.h; sourceTree = "<group>"; };
 		8D3D8ABB184202DE00154B6B /* AGPhotoBrowserZoomableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserZoomableView.m; sourceTree = "<group>"; };
 		DE2A3D7617A575C700CE0CA5 /* AGPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B9811241858D63D00F04489 /* CoreText.framework in Frameworks */,
 				DE9D38E417A5ABA10058BC67 /* QuartzCore.framework in Frameworks */,
 				DE2A3D7A17A575C700CE0CA5 /* UIKit.framework in Frameworks */,
 				DE2A3D7C17A575C700CE0CA5 /* Foundation.framework in Frameworks */,
@@ -129,6 +160,7 @@
 		DE2A3D7817A575C700CE0CA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B9811231858D63D00F04489 /* CoreText.framework */,
 				DE9D38E317A5ABA10058BC67 /* QuartzCore.framework */,
 				DE2A3D7917A575C700CE0CA5 /* UIKit.framework */,
 				DE2A3D7B17A575C700CE0CA5 /* Foundation.framework */,
@@ -216,6 +248,22 @@
 				DE48791B17CA84740048D0FC /* AGPhotoBrowserView.m */,
 				8D3D8ABA184202DE00154B6B /* AGPhotoBrowserZoomableView.h */,
 				8D3D8ABB184202DE00154B6B /* AGPhotoBrowserZoomableView.m */,
+				0B9811091858B74E00F04489 /* Comment.h */,
+				0B98110A1858B74E00F04489 /* Comment.m */,
+				0B9810FE1858B44B00F04489 /* CommentsViewController.h */,
+				0B9810FF1858B44B00F04489 /* CommentsViewController.m */,
+				0B9811001858B44B00F04489 /* CommentsViewController.xib */,
+				0B9811031858B44B00F04489 /* CommentTableViewCell.h */,
+				0B9811041858B44B00F04489 /* CommentTableViewCell.m */,
+				0B98110C1858BB8100F04489 /* NSDate+HumanizedTime.h */,
+				0B98110D1858BB8100F04489 /* NSDate+HumanizedTime.m */,
+				0B98110F1858BB8900F04489 /* Localizable_full.strings */,
+				0B9811101858BB8900F04489 /* Localizable.strings */,
+				0B98111D1858CDF000F04489 /* comment-line@2x.png */,
+				0B9811211858CE0600F04489 /* done@2x.png */,
+				0B98111E1858CDF000F04489 /* comment-tail@2x.png */,
+				0B9811131858C9EB00F04489 /* send-grey@2x.png */,
+				0B9811141858C9EB00F04489 /* send@2x.png */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -291,14 +339,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B98111F1858CDF000F04489 /* comment-line@2x.png in Resources */,
 				DE2A3D8417A575C700CE0CA5 /* InfoPlist.strings in Resources */,
 				DE2A3D8C17A575C700CE0CA5 /* Default.png in Resources */,
+				0B9811121858BB8900F04489 /* Localizable.strings in Resources */,
+				0B9811151858C9EB00F04489 /* send-grey@2x.png in Resources */,
+				0B9811061858B44B00F04489 /* CommentsViewController.xib in Resources */,
 				DE2A3D8E17A575C700CE0CA5 /* Default@2x.png in Resources */,
 				DE2A3D9017A575C700CE0CA5 /* Default-568h@2x.png in Resources */,
+				0B9811201858CDF000F04489 /* comment-tail@2x.png in Resources */,
 				DE2A3D9617A575C700CE0CA5 /* ViewController.xib in Resources */,
+				0B9811111858BB8900F04489 /* Localizable_full.strings in Resources */,
 				DE2E1B2417C923BF0027C3C8 /* sample1.jpg in Resources */,
 				DE2E1B2517C923BF0027C3C8 /* sample2.jpg in Resources */,
 				DE2E1B2617C923BF0027C3C8 /* sample3.jpg in Resources */,
+				0B9811221858CE0600F04489 /* done@2x.png in Resources */,
+				0B9811161858C9EB00F04489 /* send@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,10 +390,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE2A3D8617A575C700CE0CA5 /* main.m in Sources */,
+				0B9811081858B44B00F04489 /* CommentTableViewCell.m in Sources */,
 				DE2A3D8A17A575C700CE0CA5 /* AppDelegate.m in Sources */,
 				DE2A3D9317A575C700CE0CA5 /* ViewController.m in Sources */,
 				8D3D8ABC184202DE00154B6B /* AGPhotoBrowserZoomableView.m in Sources */,
+				0B98110E1858BB8100F04489 /* NSDate+HumanizedTime.m in Sources */,
 				DE48791C17CA84740048D0FC /* AGPhotoBrowserOverlayView.m in Sources */,
+				0B9811051858B44B00F04489 /* CommentsViewController.m in Sources */,
+				0B98110B1858B74E00F04489 /* Comment.m in Sources */,
 				DE48791D17CA84740048D0FC /* AGPhotoBrowserView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

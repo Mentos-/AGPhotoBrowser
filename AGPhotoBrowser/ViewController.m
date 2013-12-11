@@ -10,6 +10,8 @@
 
 #import "AGPhotoBrowserView.h"
 
+#import "Comment.h"
+
 
 #define SAMPLE_IMAGE_1			[UIImage imageNamed:@"sample1.jpg"]
 #define SAMPLE_IMAGE_2			[UIImage imageNamed:@"sample2.jpg"]
@@ -144,6 +146,32 @@
 	return [[_samplePictures objectAtIndex:index] objectForKey:@"Description"];
 }
 
+-(NSArray *)photoBrowser:(AGPhotoBrowserView *)photoBrowser commentsForImageAtIndex:(NSInteger)index
+{
+    NSMutableArray * comments = [NSMutableArray new];
+    NSString * text = @"";
+    for(int i = 0; i < 100; i++)
+    {
+        text = [text stringByAppendingString: [NSString stringWithFormat:@"%d",i]];
+        NSDate * date = [NSDate dateWithTimeIntervalSinceNow:-240000];
+    Comment * comment = [[Comment alloc]initWithName:@"George" text:text date:date andUserId:@"12345"];
+        [comments addObject:comment];
+    }
+    return comments;
+}
+
+-(void)  photoBrowser:(AGPhotoBrowserView *)photoBrowser
+profileImageForUserId:(NSString *)userId
+  withCompletionBlock:(void (^)(UIImage *))block
+{
+    block([UIImage imageNamed:@"done.png"]);
+}
+
+-(void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didMakeComment:(NSString *)comment
+{
+    NSLog(@"comment: %@", comment);
+}
+
 
 #pragma mark - AGPhotoBrowser delegate
 
@@ -159,14 +187,16 @@
 - (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnActionButton:(UIButton *)actionButton atIndex:(NSInteger)index
 {
 	NSLog(@"Action button tapped at index %d!", index);
+
+    /*
 	UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@""
 														delegate:nil
 											   cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button")
 										  destructiveButtonTitle:NSLocalizedString(@"Delete", @"Delete button")
 											   otherButtonTitles:NSLocalizedString(@"Share", @"Share button"), nil];
 	[action showInView:self.view];
+     */
 }
-
 
 #pragma mark - Getters
 
