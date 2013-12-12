@@ -17,10 +17,5 @@
 
 @property (nonatomic, strong) UIImageView * profileImageView;
 @property (nonatomic, strong) UITextView * nameTextDateTextView;
-/*
-@property (nonatomic, copy) UIActivityIndicatorView * activityIndicatorView;
-@property (nonatomic, strong) UILabel * nameLabel;
-@property (nonatomic, strong) UILabel * commentLabel;
-@property (nonatomic, strong) UILabel * dateLabel;
- */
+
 @end
