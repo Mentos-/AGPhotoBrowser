@@ -18,6 +18,9 @@ static const NSInteger AGPhotoBrowserOverlayInitialHeight = 120;
 - (void)sharingView:(AGPhotoBrowserOverlayView *)sharingView didTapOnActionButton:(UIButton *)actionButton;
 @optional
 - (void)sharingView:(AGPhotoBrowserOverlayView *)sharingView didTapOnSeeMoreButton:(UIButton *)actionButton;
+- (void)sharingView:(AGPhotoBrowserOverlayView *)sharingView didTapOnCommentButton:(UIButton *)commentButton;
+- (void)sharingView:(AGPhotoBrowserOverlayView *)sharingView didTapOnDescriptionLabel:(UILabel *)descriptionLabel;
+- (NSUInteger)sharingViewNumberOfComments:(AGPhotoBrowserOverlayView *)sharingView;
 
 @end
 

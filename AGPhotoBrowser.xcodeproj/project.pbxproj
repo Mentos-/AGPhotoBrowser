@@ -10,7 +10,7 @@
 		0B9811051858B44B00F04489 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9810FF1858B44B00F04489 /* CommentsViewController.m */; };
 		0B9811061858B44B00F04489 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811001858B44B00F04489 /* CommentsViewController.xib */; };
 		0B9811081858B44B00F04489 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9811041858B44B00F04489 /* CommentTableViewCell.m */; };
-		0B98110B1858B74E00F04489 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B98110A1858B74E00F04489 /* Comment.m */; };
+		0B98110B1858B74E00F04489 /* AGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B98110A1858B74E00F04489 /* AGComment.m */; };
 		0B98110E1858BB8100F04489 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B98110D1858BB8100F04489 /* NSDate+HumanizedTime.m */; };
 		0B9811111858BB8900F04489 /* Localizable_full.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B98110F1858BB8900F04489 /* Localizable_full.strings */; };
 		0B9811121858BB8900F04489 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811101858BB8900F04489 /* Localizable.strings */; };
@@ -62,8 +62,8 @@
 		0B9811001858B44B00F04489 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		0B9811031858B44B00F04489 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
 		0B9811041858B44B00F04489 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
-		0B9811091858B74E00F04489 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
-		0B98110A1858B74E00F04489 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		0B9811091858B74E00F04489 /* AGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGComment.h; sourceTree = "<group>"; };
+		0B98110A1858B74E00F04489 /* AGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGComment.m; sourceTree = "<group>"; };
 		0B98110C1858BB8100F04489 /* NSDate+HumanizedTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HumanizedTime.h"; sourceTree = "<group>"; };
 		0B98110D1858BB8100F04489 /* NSDate+HumanizedTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HumanizedTime.m"; sourceTree = "<group>"; };
 		0B98110F1858BB8900F04489 /* Localizable_full.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable_full.strings; sourceTree = "<group>"; };
@@ -248,8 +248,8 @@
 				DE48791B17CA84740048D0FC /* AGPhotoBrowserView.m */,
 				8D3D8ABA184202DE00154B6B /* AGPhotoBrowserZoomableView.h */,
 				8D3D8ABB184202DE00154B6B /* AGPhotoBrowserZoomableView.m */,
-				0B9811091858B74E00F04489 /* Comment.h */,
-				0B98110A1858B74E00F04489 /* Comment.m */,
+				0B9811091858B74E00F04489 /* AGComment.h */,
+				0B98110A1858B74E00F04489 /* AGComment.m */,
 				0B9810FE1858B44B00F04489 /* CommentsViewController.h */,
 				0B9810FF1858B44B00F04489 /* CommentsViewController.m */,
 				0B9811001858B44B00F04489 /* CommentsViewController.xib */,
@@ -397,7 +397,7 @@
 				0B98110E1858BB8100F04489 /* NSDate+HumanizedTime.m in Sources */,
 				DE48791C17CA84740048D0FC /* AGPhotoBrowserOverlayView.m in Sources */,
 				0B9811051858B44B00F04489 /* CommentsViewController.m in Sources */,
-				0B98110B1858B74E00F04489 /* Comment.m in Sources */,
+				0B98110B1858B74E00F04489 /* AGComment.m in Sources */,
 				DE48791D17CA84740048D0FC /* AGPhotoBrowserView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,7 +19,8 @@
 - (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser descriptionForImageAtIndex:(NSInteger)index;
 
 //Comments
-- (NSArray *)photoBrowser:(AGPhotoBrowserView *)photoBrowser commentsForImageAtIndex:(NSInteger)index;
-
+- (NSUInteger)photoBrowser:(AGPhotoBrowserView *)photoBrowser numberOfCommentsForImageAtIndex:(NSInteger)index;
+- (NSArray *) photoBrowser:(AGPhotoBrowserView *)photoBrowser commentsForImageAtIndex:(NSInteger)index;
+- (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser profileImageForUserId:(NSString *)userId withCompletionBlock:(void(^)(UIImage *))block;
 
 @end

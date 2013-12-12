@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UIButton *seeMoreButton;
 @property (nonatomic, strong, readwrite) UIButton *actionButton;
+@property (nonatomic, strong, readwrite) UIButton *commentButton;
 
 @property (nonatomic, assign, readwrite, getter = isVisible) BOOL visible;
 
@@ -97,7 +98,9 @@
 		self.separatorView.hidden = YES;
 	}
 	
-	self.actionButton.frame = CGRectMake(CGRectGetWidth(self.sharingView.frame) - 55 - 10, CGRectGetHeight(self.sharingView.frame) - 32 - 5, 55, 32);
+	self.actionButton.frame = CGRectMake(CGRectGetWidth(self.sharingView.frame) - 55 - 10, CGRectGetHeight(self.sharingView.frame) - 32, 55, 32);
+    
+    self.commentButton.frame = CGRectMake(20, CGRectGetHeight(self.sharingView.frame) - 32, 160, 32);
 }
 
 - (void)setupView
@@ -110,6 +113,7 @@
 	[self.sharingView addSubview:self.descriptionLabel];
 	[self.sharingView addSubview:self.seeMoreButton];
 	[self.sharingView addSubview:self.actionButton];
+    [self.sharingView addSubview:self.commentButton];
 	
 	[self addSubview:self.sharingView];
 }
@@ -131,6 +135,7 @@
 
 - (void)resetOverlayView
 {
+    NSLog(@"resetOverlayView");
 	if (floor(CGRectGetHeight(self.frame)) != AGPhotoBrowserOverlayInitialHeight) {
 		__block CGRect initialSharingFrame = self.frame;
 		initialSharingFrame.origin.y = round(CGRectGetHeight([UIScreen mainScreen].bounds) - AGPhotoBrowserOverlayInitialHeight);
@@ -148,6 +153,8 @@
 											  }];
 						 }];
 	}
+    
+    [self updateCommentButtonTitle];
 }
 
 
@@ -157,6 +164,13 @@
 {
 	if ([_delegate respondsToSelector:@selector(sharingView:didTapOnActionButton:)]) {
 		[_delegate sharingView:self didTapOnActionButton:sender];
+	}
+}
+
+- (void)p_commentButtonTapped:(UIButton *)sender
+{
+	if ([_delegate respondsToSelector:@selector(sharingView:didTapOnCommentButton:)]) {
+		[_delegate sharingView:self didTapOnCommentButton:sender];
 	}
 }
 
@@ -200,6 +214,7 @@
 					 animations:^(){
 						 self.alpha = newAlpha;
 						 self.actionButton.alpha = newAlpha;
+                         self.commentButton.alpha = newAlpha;
 					 }];
 }
 
@@ -274,9 +289,23 @@
 		_descriptionLabel.font = [UIFont systemFontOfSize:13];
 		_descriptionLabel.backgroundColor = [UIColor clearColor];
 		_descriptionLabel.numberOfLines = 0;
+        
+        UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                  action:@selector(descriptionLabelClicked:)];
+        // if labelView is not set userInteractionEnabled, you must do so
+        [_descriptionLabel setUserInteractionEnabled:YES];
+        [_descriptionLabel addGestureRecognizer:gesture];
 	}
 	
 	return _descriptionLabel;
+}
+
+-(void)descriptionLabelClicked:(UITapGestureRecognizer *)gesture
+{
+    if([self.delegate respondsToSelector:@selector(sharingView:didTapOnDescriptionLabel:)])
+    {
+        [self.delegate sharingView:self didTapOnDescriptionLabel:_descriptionLabel];
+    }
 }
 
 - (UIButton *)seeMoreButton
@@ -309,6 +338,33 @@
 	}
 	
 	return _actionButton;
+}
+
+- (UIButton *)commentButton
+{
+	if (!_commentButton) {
+		_commentButton = [[UIButton alloc] init];
+
+        _commentButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+		[_commentButton setBackgroundColor:[UIColor clearColor]];
+		[_commentButton setTitleColor:[UIColor colorWithWhite:0.9 alpha:0.9] forState:UIControlStateNormal];
+		[_commentButton setTitleColor:[UIColor colorWithWhite:0.9 alpha:0.9] forState:UIControlStateHighlighted];
+        UIFont * font = [UIFont fontWithName:@"Helvetica-Bold" size:12.0f];// [UIFont boldSystemFontOfSize:12.0f];
+		[_commentButton.titleLabel setFont:font];
+        
+		[_commentButton addTarget:self action:@selector(p_commentButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+	}
+    
+    [self updateCommentButtonTitle];
+	
+	return _commentButton;
+}
+
+-(void)updateCommentButtonTitle
+{
+    NSUInteger numberOfComments = [self.delegate sharingViewNumberOfComments:self];
+    NSString * title = [NSString stringWithFormat:@"%d comments", numberOfComments];
+    [_commentButton setTitle:title forState:UIControlStateNormal];
 }
 
 - (UITapGestureRecognizer *)tapGesture

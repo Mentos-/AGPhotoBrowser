@@ -221,6 +221,11 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 	[self show];
 }
 
+-(NSInteger)currentlySelectedIndex
+{
+    return _currentlySelectedIndex;
+}
+
 - (void)hideWithCompletion:( void (^) (BOOL finished) )completionBlock
 {
 	[UIView animateWithDuration:AGPhotoBrowserAnimationDuration
@@ -241,7 +246,9 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 
 -(void)reloadData
 {
-    
+    [self.photoTableView reloadData];
+    [_commentsViewController reloadData];
+    [self.overlayView resetOverlayView];
 }
 
 
@@ -252,28 +259,52 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 	if ([_delegate respondsToSelector:@selector(photoBrowser:didTapOnActionButton:atIndex:)]) {
 		[_delegate photoBrowser:self didTapOnActionButton:actionButton atIndex:_currentlySelectedIndex];
 	}
-    
+}
+
+-(NSUInteger)sharingViewNumberOfComments:(AGPhotoBrowserOverlayView *)sharingView
+{
+    if([self.dataSource respondsToSelector:@selector(photoBrowser:numberOfCommentsForImageAtIndex:)])
+    {
+        return [self.dataSource photoBrowser:self numberOfCommentsForImageAtIndex:_currentlySelectedIndex];
+    }
+
+    return 0;
+}
+
+-(void)sharingView:(AGPhotoBrowserOverlayView *)sharingView didTapOnCommentButton:(UIButton *)actionButton
+{
     [self showCommentsViewController];
+}
+
+-(void)sharingView:(AGPhotoBrowserOverlayView *)sharingView didTapOnDescriptionLabel:(UILabel *)descriptionLabel
+{
+    if([self.delegate respondsToSelector:@selector(photoBrowser:didTapOnDescriptionLabel:)]){
+        [self.delegate photoBrowser:self didTapOnDescriptionLabel:descriptionLabel];
+    }
 }
 
 -(void)showCommentsViewController
 {
-    _commentsViewController = [[CommentsViewController alloc]init];
-    _commentsViewController.delegate = self;
-    _commentsViewController.showProfilePictureForUserId = [self.delegate respondsToSelector:@selector(photoBrowser:profileImageForUserId:withCompletionBlock:)];
-    UIView * view = [_commentsViewController view];
-    
-    [view setFrame:self.frame];
-    
-    [self addSubview:[_commentsViewController view]];
-    
-    [_commentsViewController viewWillAppear:NO];
+    NSLog(@"showCommentsViewController");
+    if(!_commentsViewController)
+    {
+        _commentsViewController = [[CommentsViewController alloc]init];
+        _commentsViewController.delegate = self;
+        _commentsViewController.showProfilePictureForUserId = [self.delegate respondsToSelector:@selector(photoBrowser:profileImageForUserId:withCompletionBlock:)];
+        UIView * view = [_commentsViewController view];
+        
+        [view setFrame:self.frame];
+        
+        [self addSubview:[_commentsViewController view]];
+
+        [_commentsViewController viewWillAppear:NO];
+    }
 }
 
 -(NSArray *)commentsViewController:(CommentsViewController *)commentsViewController commentsForImageAtIndex:(NSInteger)index
 {
-    if([self.delegate respondsToSelector:@selector(photoBrowser:commentsForImageAtIndex:)]){
-        return [self.delegate photoBrowser:self commentsForImageAtIndex:index];
+    if([self.dataSource respondsToSelector:@selector(photoBrowser:commentsForImageAtIndex:)]){
+        return [self.dataSource photoBrowser:self commentsForImageAtIndex:index];
     }
     
     return nil;
@@ -283,9 +314,9 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
         profileImageForUserId:(NSString *)userId
           withCompletionBlock:(void (^)(UIImage *))block
 {
-    if([self.delegate respondsToSelector:@selector(photoBrowser:profileImageForUserId:withCompletionBlock:)])
+    if([self.dataSource respondsToSelector:@selector(photoBrowser:profileImageForUserId:withCompletionBlock:)])
     {
-        return [self.delegate photoBrowser:self profileImageForUserId:userId withCompletionBlock:block];
+        return [self.dataSource photoBrowser:self profileImageForUserId:userId withCompletionBlock:block];
     }
 }
 

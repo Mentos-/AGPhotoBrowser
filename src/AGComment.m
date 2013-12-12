@@ -1,15 +1,15 @@
 //
-//  Comment.m
+//  AGComment.m
 //  AlbumStore
 //
 //  Created by George Rivara on 3/5/13.
 //  Copyright (c) 2013 George Rivara. All rights reserved.
 //
 
-#import "Comment.h"
+#import "AGComment.h"
 #import "NSDate+HumanizedTime.h"
 
-@interface Comment ()
+@interface AGComment ()
 {
     NSDate * _date;
     NSString * _userId;
@@ -17,7 +17,17 @@
 
 @end
 
-@implementation Comment
+@implementation AGComment
+
+-(id)initWithName:(NSString *)name text:(NSString *)text
+{
+    return [self initWithName:name text:text date:[NSDate date]];
+}
+
+-(id)initWithName:(NSString *)name text:(NSString *)text date:(NSDate *)date
+{
+    return [self initWithName:name text:text date:date andUserId:nil];
+}
 
 -(id)initWithName:(NSString *)name text:(NSString *)text date:(NSDate *)date andUserId:(NSString *)userId
 {

@@ -8,7 +8,7 @@
 
 #import "CommentsViewController.h"
 #import "CommentTableViewCell.h"
-#import "Comment.h"
+#import "AGComment.h"
 
 #import <CoreText/CoreText.h>
 
@@ -20,6 +20,7 @@
 -(void)reloadData
 {
     [_commentTableView reloadData];
+    [self scrollToLastCommentAnimated:NO];
 }
 
 - (id)init
@@ -101,16 +102,27 @@
 {
     NSString * text = comment.text;
     NSString * name = comment.name;
-    NSString * timeSince = comment.timeSince;
+    NSString * date = comment.timeSince;
     
-    NSString * commentString = [NSString stringWithFormat:@"%@\n%@\n%@", name, text, timeSince];
+    NSString * commentString = [NSString stringWithFormat:@"%@\n%@\n%@", name, text, date];
     NSMutableAttributedString * attString = [[NSMutableAttributedString alloc]initWithString:commentString];
-    UIColor * black = [UIColor blackColor];
-    UIFont * font = [UIFont boldSystemFontOfSize:15.0f];
-    NSUInteger nameLength = name.length;
     
-    [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, nameLength)];
-    [attString addAttribute:NSForegroundColorAttributeName value:black range:NSMakeRange(0, nameLength)];
+    //make the name of the user bold
+    UIColor * nameColor = [UIColor blackColor];
+    UIFont * nameFont = [UIFont boldSystemFontOfSize:15.0f];
+    NSUInteger nameLength = name.length;
+    [attString addAttribute:NSFontAttributeName value:nameFont range:NSMakeRange(0, nameLength)];
+    [attString addAttribute:NSForegroundColorAttributeName value:nameColor range:NSMakeRange(0, nameLength)];
+    
+    //keep the text of comment default
+    
+    //make the date of their comment gray and smaller
+    UIColor * dateColor = [UIColor grayColor];
+    UIFont * dateFont = [UIFont boldSystemFontOfSize:10.0f];
+    NSUInteger dateLength = date.length;
+    int loc = (commentString.length - 1) - (dateLength - 1);
+    [attString addAttribute:NSFontAttributeName value:dateFont range:NSMakeRange(loc, dateLength)];
+    [attString addAttribute:NSForegroundColorAttributeName value:dateColor range:NSMakeRange(loc, dateLength)];
     
     return attString;
 }
@@ -440,7 +452,7 @@
 
         [_commentTableView scrollToRowAtIndexPath:bottomIndexPath
                                  atScrollPosition:UITableViewScrollPositionBottom
-                                         animated:animated];
+                                         animated:NO];
     }
 }
 -(void)adjustForOrientation:(UIInterfaceOrientation) orientation
@@ -469,7 +481,7 @@
     NSLog(@"statusBarWidth: %f", statusBarWidth);
     float keyboardHeight = portrait ? keyboardFrame.size.height : keyboardFrame.size.width;
     
-    float tabBarAndCaptionHeight = portrait ? 70 : 60;
+    float tabBarAndCaptionHeight = 25;// portrait ? 70 : 60;
     float triangleHeight = 10 + 1; //height of the triangle tail that points at "3 comments"
     NSLog(@"statusBarHeight: %f", statusBarHeight);
     CGRect commentViewFrame = _commentView.frame;

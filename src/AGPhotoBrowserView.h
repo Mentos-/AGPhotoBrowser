@@ -21,6 +21,7 @@
 
 - (void)show;
 - (void)showFromIndex:(NSInteger)initialIndex;
+- (NSInteger)currentlySelectedIndex;
 - (void)hideWithCompletion:( void (^) (BOOL finished) )completionBlock;
 
 - (void)reloadData;

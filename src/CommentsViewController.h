@@ -15,7 +15,7 @@
 - (NSArray *)commentsViewController:(CommentsViewController *)commentsViewController
             commentsForImageAtIndex:(NSInteger)index;
 
-- (void)commentsViewController:(CommentsViewController *)commentsViewController didMakeComment:(NSString *)comment;
+- (void)commentsViewController:(CommentsViewController *)commentsViewController didMakeComment:(NSString *)text;
 
 - (void)commentsViewControllerDidCancel:(CommentsViewController *)commentsViewController;
 

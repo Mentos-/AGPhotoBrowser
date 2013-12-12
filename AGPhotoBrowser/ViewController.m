@@ -20,6 +20,7 @@
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, AGPhotoBrowserDelegate, AGPhotoBrowserDataSource> {
 	NSArray *_samplePictures;
+    NSMutableArray * comments;
 }
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -51,6 +52,19 @@
 		  @"Description" : @"A colorful image"
 	},
 	];
+    
+    if(!comments)
+    {
+        comments = [NSMutableArray new];
+    }
+    NSString * text = @"";
+    for(int i = 0; i < 100; i++)
+    {
+        text = [text stringByAppendingString: [NSString stringWithFormat:@"%d",i]];
+        NSDate * date = [NSDate dateWithTimeIntervalSinceNow:-240000];
+        Comment * comment = [[Comment alloc]initWithName:@"George" text:text date:date andUserId:@"12345"];
+        [comments addObject:comment];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,25 +152,24 @@
 
 - (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser titleForImageAtIndex:(NSInteger)index
 {
-	return [[_samplePictures objectAtIndex:index] objectForKey:@"Title"];
+	return nil;// [[_samplePictures objectAtIndex:index] objectForKey:@"Title"];
 }
 
 - (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser descriptionForImageAtIndex:(NSInteger)index
 {
-	return [[_samplePictures objectAtIndex:index] objectForKey:@"Description"];
+	return @"added By George";// [[_samplePictures objectAtIndex:index] objectForKey:@"Description"];
+}
+
+-(NSUInteger)photoBrowser:(AGPhotoBrowserView *)photoBrowser numberOfCommentsForImageAtIndex:(NSInteger)index
+{
+    if(index == 0){
+    return comments.count;
+    }
+    return 50;
 }
 
 -(NSArray *)photoBrowser:(AGPhotoBrowserView *)photoBrowser commentsForImageAtIndex:(NSInteger)index
 {
-    NSMutableArray * comments = [NSMutableArray new];
-    NSString * text = @"";
-    for(int i = 0; i < 100; i++)
-    {
-        text = [text stringByAppendingString: [NSString stringWithFormat:@"%d",i]];
-        NSDate * date = [NSDate dateWithTimeIntervalSinceNow:-240000];
-    Comment * comment = [[Comment alloc]initWithName:@"George" text:text date:date andUserId:@"12345"];
-        [comments addObject:comment];
-    }
     return comments;
 }
 
@@ -167,9 +180,13 @@ profileImageForUserId:(NSString *)userId
     block([UIImage imageNamed:@"done.png"]);
 }
 
--(void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didMakeComment:(NSString *)comment
+-(void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didMakeComment:(NSString *)text
 {
-    NSLog(@"comment: %@", comment);
+    NSDate * date = [NSDate dateWithTimeIntervalSinceNow:-240000];
+    Comment * comment = [[Comment alloc]initWithName:@"George" text:text];//] date:date andUserId:@"12345"];
+    [comments addObject:comment];
+    
+    [photoBrowser reloadData];
 }
 
 
@@ -188,14 +205,18 @@ profileImageForUserId:(NSString *)userId
 {
 	NSLog(@"Action button tapped at index %d!", index);
 
-    /*
 	UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@""
 														delegate:nil
 											   cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button")
 										  destructiveButtonTitle:NSLocalizedString(@"Delete", @"Delete button")
 											   otherButtonTitles:NSLocalizedString(@"Share", @"Share button"), nil];
 	[action showInView:self.view];
-     */
+}
+
+-(void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnDescriptionLabel:(UILabel *)descriptionLabel
+{
+    NSLog(@"descriptionlabel: %@", descriptionLabel.text);
+    NSLog(@"photoAtIndex: %d", _browserView.currentlySelectedIndex);    
 }
 
 #pragma mark - Getters

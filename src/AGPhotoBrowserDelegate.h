@@ -16,12 +16,7 @@
 
 - (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnDoneButton:(UIButton *)doneButton;
 - (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnActionButton:(UIButton *)actionButton atIndex:(NSInteger)index;
-
-
-- (NSArray *)photoBrowser:(AGPhotoBrowserView *)photoBrowser commentsForImageAtIndex:(NSInteger)index;
-- (void) photoBrowser:(AGPhotoBrowserView *)photoBrowser
-profileImageForUserId:(NSString *)userId
-  withCompletionBlock:(void(^)(UIImage *))block;
+- (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnDescriptionLabel:(UILabel *)descriptionLabel;
 - (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didMakeComment:(NSString *)comment;
 
 @end

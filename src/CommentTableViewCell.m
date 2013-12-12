@@ -39,6 +39,7 @@
         [self.contentView addSubview:_profileImageView];
         
         _nameTextDateTextView = [[UITextView alloc]init];
+        _nameTextDateTextView.userInteractionEnabled = NO;
         _nameTextDateTextView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_nameTextDateTextView];
     }
