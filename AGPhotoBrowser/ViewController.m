@@ -10,7 +10,7 @@
 
 #import "AGPhotoBrowserView.h"
 
-#import "Comment.h"
+#import "AGComment.h"
 
 
 #define SAMPLE_IMAGE_1			[UIImage imageNamed:@"sample1.jpg"]
@@ -62,7 +62,7 @@
     {
         text = [text stringByAppendingString: [NSString stringWithFormat:@"%d",i]];
         NSDate * date = [NSDate dateWithTimeIntervalSinceNow:-240000];
-        Comment * comment = [[Comment alloc]initWithName:@"George" text:text date:date andUserId:@"12345"];
+        AGComment * comment = [[AGComment alloc]initWithName:@"George" text:text date:date andUserId:@"12345"];
         [comments addObject:comment];
     }
 }
@@ -183,7 +183,7 @@ profileImageForUserId:(NSString *)userId
 -(void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didMakeComment:(NSString *)text
 {
     NSDate * date = [NSDate dateWithTimeIntervalSinceNow:-240000];
-    Comment * comment = [[Comment alloc]initWithName:@"George" text:text];//] date:date andUserId:@"12345"];
+    AGComment * comment = [[AGComment alloc]initWithName:@"George" text:text];//] date:date andUserId:@"12345"];
     [comments addObject:comment];
     
     [photoBrowser reloadData];

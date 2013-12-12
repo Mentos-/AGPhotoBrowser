@@ -74,7 +74,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Comment * comment = [_comments objectAtIndex:indexPath.row];
+    AGComment * comment = [_comments objectAtIndex:indexPath.row];
     NSAttributedString * attString = [self attributedStringWithComment:comment];
     
     return [self heightOfAttributedString:attString forWidth:kWidthOfCommentTextView];
@@ -98,7 +98,7 @@
     return CGRectGetHeight(rect)+35; //+35 fixes what appears to be an error on Apple's part
 }
 
--(NSAttributedString *)attributedStringWithComment:(Comment*)comment
+-(NSAttributedString *)attributedStringWithComment:(AGComment*)comment
 {
     NSString * text = comment.text;
     NSString * name = comment.name;
@@ -136,7 +136,7 @@
                                           reuseIdentifier:@"CommentTableViewCell"];
     }
 
-    Comment * comment = [_comments objectAtIndex:indexPath.row];
+    AGComment * comment = [_comments objectAtIndex:indexPath.row];
     
     //setup name/text/date textView
     NSAttributedString * attrString = [self attributedStringWithComment:comment];
