@@ -7,7 +7,7 @@
 //
 
 #import "AGCommentsViewController.h"
-#import "CommentTableViewCell.h"
+#import "AGCommentTableViewCell.h"
 #import "AGComment.h"
 
 #import <CoreText/CoreText.h>
@@ -25,7 +25,7 @@
 
 - (id)init
 {
-    self = [super initWithNibName:@"CommentsViewController" bundle:nil];
+    self = [super initWithNibName:@"AGCommentsViewController" bundle:nil];
     
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -106,10 +106,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    __block CommentTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CommentTableViewCell"];
+    __block AGCommentTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"AGCommentTableViewCell"];
     if(!cell){
-        cell = [[CommentTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:@"CommentTableViewCell"];
+        cell = [[AGCommentTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"AGCommentTableViewCell"];
     }
 
     AGComment * comment = [_comments objectAtIndex:indexPath.row];

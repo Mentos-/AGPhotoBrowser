@@ -1,5 +1,5 @@
 //
-//  CommentTableViewCell.h
+//  AGCommentTableViewCell.h
 //  AGPhotoBrowser
 //
 //  Created by Hellrider on 7/28/13.
@@ -13,7 +13,7 @@
 
 #define kCommentTableViewCellInset 10
 
-@interface CommentTableViewCell : UITableViewCell
+@interface AGCommentTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UIImageView * profileImageView;
 @property (nonatomic, strong) UITextView * nameTextDateTextView;

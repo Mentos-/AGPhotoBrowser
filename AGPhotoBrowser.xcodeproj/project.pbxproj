@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B9811051858B44B00F04489 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9810FF1858B44B00F04489 /* CommentsViewController.m */; };
-		0B9811061858B44B00F04489 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811001858B44B00F04489 /* CommentsViewController.xib */; };
-		0B9811081858B44B00F04489 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9811041858B44B00F04489 /* CommentTableViewCell.m */; };
+		0B9811051858B44B00F04489 /* AGCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9810FF1858B44B00F04489 /* AGCommentsViewController.m */; };
+		0B9811061858B44B00F04489 /* AGCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9811001858B44B00F04489 /* AGCommentsViewController.xib */; };
+		0B9811081858B44B00F04489 /* AGCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9811041858B44B00F04489 /* AGCommentTableViewCell.m */; };
 		0B98110B1858B74E00F04489 /* AGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B98110A1858B74E00F04489 /* AGComment.m */; };
 		0B98110E1858BB8100F04489 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B98110D1858BB8100F04489 /* NSDate+HumanizedTime.m */; };
 		0B9811111858BB8900F04489 /* Localizable_full.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B98110F1858BB8900F04489 /* Localizable_full.strings */; };
@@ -58,10 +58,10 @@
 
 /* Begin PBXFileReference section */
 		0B9810FE1858B44B00F04489 /* AGCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCommentsViewController.h; sourceTree = "<group>"; };
-		0B9810FF1858B44B00F04489 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
-		0B9811001858B44B00F04489 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
-		0B9811031858B44B00F04489 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
-		0B9811041858B44B00F04489 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		0B9810FF1858B44B00F04489 /* AGCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCommentsViewController.m; sourceTree = "<group>"; };
+		0B9811001858B44B00F04489 /* AGCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGCommentsViewController.xib; sourceTree = "<group>"; };
+		0B9811031858B44B00F04489 /* AGCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCommentTableViewCell.h; sourceTree = "<group>"; };
+		0B9811041858B44B00F04489 /* AGCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCommentTableViewCell.m; sourceTree = "<group>"; };
 		0B9811091858B74E00F04489 /* AGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGComment.h; sourceTree = "<group>"; };
 		0B98110A1858B74E00F04489 /* AGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGComment.m; sourceTree = "<group>"; };
 		0B98110C1858BB8100F04489 /* NSDate+HumanizedTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HumanizedTime.h"; sourceTree = "<group>"; };
@@ -251,10 +251,10 @@
 				0B9811091858B74E00F04489 /* AGComment.h */,
 				0B98110A1858B74E00F04489 /* AGComment.m */,
 				0B9810FE1858B44B00F04489 /* AGCommentsViewController.h */,
-				0B9810FF1858B44B00F04489 /* CommentsViewController.m */,
-				0B9811001858B44B00F04489 /* CommentsViewController.xib */,
-				0B9811031858B44B00F04489 /* CommentTableViewCell.h */,
-				0B9811041858B44B00F04489 /* CommentTableViewCell.m */,
+				0B9810FF1858B44B00F04489 /* AGCommentsViewController.m */,
+				0B9811001858B44B00F04489 /* AGCommentsViewController.xib */,
+				0B9811031858B44B00F04489 /* AGCommentTableViewCell.h */,
+				0B9811041858B44B00F04489 /* AGCommentTableViewCell.m */,
 				0B98110C1858BB8100F04489 /* NSDate+HumanizedTime.h */,
 				0B98110D1858BB8100F04489 /* NSDate+HumanizedTime.m */,
 				0B98110F1858BB8900F04489 /* Localizable_full.strings */,
@@ -344,7 +344,7 @@
 				DE2A3D8C17A575C700CE0CA5 /* Default.png in Resources */,
 				0B9811121858BB8900F04489 /* Localizable.strings in Resources */,
 				0B9811151858C9EB00F04489 /* send-grey@2x.png in Resources */,
-				0B9811061858B44B00F04489 /* CommentsViewController.xib in Resources */,
+				0B9811061858B44B00F04489 /* AGCommentsViewController.xib in Resources */,
 				DE2A3D8E17A575C700CE0CA5 /* Default@2x.png in Resources */,
 				DE2A3D9017A575C700CE0CA5 /* Default-568h@2x.png in Resources */,
 				0B9811201858CDF000F04489 /* comment-tail@2x.png in Resources */,
@@ -390,13 +390,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE2A3D8617A575C700CE0CA5 /* main.m in Sources */,
-				0B9811081858B44B00F04489 /* CommentTableViewCell.m in Sources */,
+				0B9811081858B44B00F04489 /* AGCommentTableViewCell.m in Sources */,
 				DE2A3D8A17A575C700CE0CA5 /* AppDelegate.m in Sources */,
 				DE2A3D9317A575C700CE0CA5 /* ViewController.m in Sources */,
 				8D3D8ABC184202DE00154B6B /* AGPhotoBrowserZoomableView.m in Sources */,
 				0B98110E1858BB8100F04489 /* NSDate+HumanizedTime.m in Sources */,
 				DE48791C17CA84740048D0FC /* AGPhotoBrowserOverlayView.m in Sources */,
-				0B9811051858B44B00F04489 /* CommentsViewController.m in Sources */,
+				0B9811051858B44B00F04489 /* AGCommentsViewController.m in Sources */,
 				0B98110B1858B74E00F04489 /* AGComment.m in Sources */,
 				DE48791D17CA84740048D0FC /* AGPhotoBrowserView.m in Sources */,
 			);
