@@ -27,14 +27,6 @@
 @end
 
 @interface AGCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
-{
-    NSArray * _comments;
-    
-    BOOL keyboardIsShowing;
-    CGRect keyboardFrame;
-    
-    BOOL closing;
-}
 
 @property (weak, nonatomic) id<AGCommentsViewControllerDelegate> delegate;
 

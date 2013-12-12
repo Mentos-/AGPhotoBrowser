@@ -15,13 +15,19 @@
 #define kDateLabelHeight 18
 #define kWidthOfCommentTextView 280
 
-@implementation AGCommentsViewController
-
--(void)reloadData
+@interface AGCommentsViewController () 
 {
-    [_commentTableView reloadData];
-    [self scrollToLastCommentAnimated:NO];
+    NSArray * _comments;
+    
+    BOOL keyboardIsShowing;
+    CGRect keyboardFrame;
 }
+@end
+
+#pragma mark - Init
+
+
+@implementation AGCommentsViewController
 
 - (id)init
 {
@@ -40,6 +46,17 @@
     }
     return self;
 }
+
+#pragma mark - Public Methods
+
+-(void)reloadData
+{
+    [_commentTableView reloadData];
+    [self scrollToLastCommentAnimated:NO];
+}
+
+
+#pragma mark - UITableViewDelegate
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -130,7 +147,7 @@
     if(self.showProfilePictureForUserId)
     {
         CGFloat xInset = kCommentTableViewCellInset;
-        CGFloat yInset = kCommentTableViewCellInset;// ( textViewHeight / 2 ) - (kCommentTableViewCellProfileWidth / 2);
+        CGFloat yInset = kCommentTableViewCellInset;
         CGFloat height = kCommentTableViewCellProfileWidth;
         CGFloat width = kCommentTableViewCellProfileWidth;
         
@@ -149,12 +166,11 @@
     return cell;
 }
 
+#pragma mark - Private Methods
+
 -(void)closeCommentViewController
 {
-    //closing is a semaphore to prevent 'scrollToLastCommentAnimated' from being called after we are dismissed
-    closing = YES;
     [self.delegate commentsViewControllerDidCancel:self];
-    closing = NO;
 }
 
 -(void)backgroundButtonClicked
@@ -290,21 +306,20 @@
         [_commentTextField resignFirstResponder];
     }
 }
+
 -(void)closeButtonClicked
 {
     [self closeCommentViewController];
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    NSLog(@"CommentsViewController willAppear");
 
-    [self adjustForOrientation:[UIApplication sharedApplication].statusBarOrientation];
-}
+
+
 -(void)scrollToLastCommentAnimated:(BOOL)animated
 {
+    int numberOfSections = [_commentTableView numberOfSections];
     int numberOfRows = [_commentTableView numberOfRowsInSection:0];
     
-    if(numberOfRows > 0 && !closing)//bug where if we are in the middle of dismissing this will crash us
+    if(numberOfRows > 0 && numberOfSections > 0)
     {
         NSIndexPath *bottomIndexPath = [NSIndexPath indexPathForRow:numberOfRows-1
                                                           inSection:0];
@@ -312,7 +327,7 @@
 
         [_commentTableView scrollToRowAtIndexPath:bottomIndexPath
                                  atScrollPosition:UITableViewScrollPositionBottom
-                                         animated:NO];//animated crashes sometimes when view is quickly opened/closed
+                                         animated:NO];//animated]; bug where quickly closing/opening AGCommentsViewController caused a crash here
     }
 }
 
@@ -348,6 +363,17 @@
     [self scrollToLastCommentAnimated:YES];
 }
 
+
+
+//we implement this to enable our gestureRecognizer to pass through to our commentTableView..
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    //without it the gesture will block touches from getting to the tableView
+    return YES;
+}
+
+#pragma mark - UIViewController Methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -380,22 +406,9 @@
     [backgroundLayer setCornerRadius:5.0f];
 }
 
-//we implement this to enable our gestureRecognizer to pass through to our commentTableView..
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    //without it the gesture will block touches from getting to the tableView
-    return YES;
-}
-
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+-(void)viewWillAppear:(BOOL)animated
 {
     [self adjustForOrientation:[UIApplication sharedApplication].statusBarOrientation];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidUnload {
@@ -408,5 +421,16 @@
     [self setWriteCommentLabel:nil];
     [self setCommentBackgroundView:nil];
     [super viewDidUnload];
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self adjustForOrientation:[UIApplication sharedApplication].statusBarOrientation];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 @end

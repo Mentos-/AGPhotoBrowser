@@ -183,12 +183,11 @@ profileImageForUserId:(NSString *)userId
 -(void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didMakeComment:(NSString *)text
 {
     NSDate * date = [NSDate dateWithTimeIntervalSinceNow:-240000];
-    AGComment * comment = [[AGComment alloc]initWithName:@"George" text:text];//] date:date andUserId:@"12345"];
+    AGComment * comment = [[AGComment alloc]initWithName:@"George" text:text date:date andUserId:@"12345"];
     [comments addObject:comment];
     
     [photoBrowser reloadData];
 }
-
 
 #pragma mark - AGPhotoBrowser delegate
 
