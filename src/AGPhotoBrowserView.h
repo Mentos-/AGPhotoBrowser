@@ -10,7 +10,7 @@
 
 #import "AGPhotoBrowserDelegate.h"
 #import "AGPhotoBrowserDataSource.h"
-#import "CommentsViewController.h"
+#import "AGCommentsViewController.h"
 
 @interface AGPhotoBrowserView : UIView
 

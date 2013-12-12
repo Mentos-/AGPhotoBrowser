@@ -18,7 +18,7 @@ AGPhotoBrowserZoomableViewDelegate,
 UITableViewDataSource,
 UITableViewDelegate,
 UIGestureRecognizerDelegate,
-CommentsViewControllerDelegate
+AGCommentsViewControllerDelegate
 > {
 	CGPoint _startingPanPoint;
 	BOOL _wantedFullscreenLayout;
@@ -26,7 +26,7 @@ CommentsViewControllerDelegate
 	CGRect _originalParentViewFrame;
 	NSInteger _currentlySelectedIndex;
     
-    CommentsViewController * _commentsViewController;
+    AGCommentsViewController * _commentsViewController;
 }
 
 @property (nonatomic, strong, readwrite) UIButton *doneButton;
@@ -288,7 +288,7 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
     NSLog(@"showCommentsViewController");
     if(!_commentsViewController)
     {
-        _commentsViewController = [[CommentsViewController alloc]init];
+        _commentsViewController = [[AGCommentsViewController alloc]init];
         _commentsViewController.delegate = self;
         _commentsViewController.showProfilePictureForUserId = [self.delegate respondsToSelector:@selector(photoBrowser:profileImageForUserId:withCompletionBlock:)];
         UIView * view = [_commentsViewController view];
@@ -301,7 +301,7 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
     }
 }
 
--(NSArray *)commentsViewController:(CommentsViewController *)commentsViewController commentsForImageAtIndex:(NSInteger)index
+-(NSArray *)commentsViewController:(AGCommentsViewController *)commentsViewController commentsForImageAtIndex:(NSInteger)index
 {
     if([self.dataSource respondsToSelector:@selector(photoBrowser:commentsForImageAtIndex:)]){
         return [self.dataSource photoBrowser:self commentsForImageAtIndex:index];
@@ -310,7 +310,7 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
     return nil;
 }
 
--(void)commentsViewController:(CommentsViewController *)commentsViewController
+-(void)commentsViewController:(AGCommentsViewController *)commentsViewController
         profileImageForUserId:(NSString *)userId
           withCompletionBlock:(void (^)(UIImage *))block
 {
@@ -320,7 +320,7 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
     }
 }
 
--(void)commentsViewController:(CommentsViewController *)commentsViewController didMakeComment:(NSString *)comment
+-(void)commentsViewController:(AGCommentsViewController *)commentsViewController didMakeComment:(NSString *)comment
 {
     if([self.delegate respondsToSelector:@selector(photoBrowser:didMakeComment:)])
     {
@@ -328,7 +328,7 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
     }
 }
 
--(void)commentsViewControllerDidCancel:(CommentsViewController *)commentsViewController
+-(void)commentsViewControllerDidCancel:(AGCommentsViewController *)commentsViewController
 {
     [[_commentsViewController view]removeFromSuperview];
     _commentsViewController = nil;

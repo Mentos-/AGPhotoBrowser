@@ -1,12 +1,12 @@
 //
 //  CommentsViewController.m
-//  AlbumStore
+//  AGPhotoBrowser
 //
-//  Created by George Rivara on 3/5/13.
-//  Copyright (c) 2013 George Rivara. All rights reserved.
+//  Created by Hellrider on 7/28/13.
+//  Copyright (c) 2013 Andrea Giavatto. All rights reserved.
 //
 
-#import "CommentsViewController.h"
+#import "AGCommentsViewController.h"
 #import "CommentTableViewCell.h"
 #import "AGComment.h"
 
@@ -15,7 +15,7 @@
 #define kDateLabelHeight 18
 #define kWidthOfCommentTextView 280
 
-@implementation CommentsViewController
+@implementation AGCommentsViewController
 
 -(void)reloadData
 {
@@ -39,30 +39,6 @@
                                                    object:nil];
     }
     return self;
-}
-/*
-- (id)init
-{
-    if ((self = [self init]))
-    {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(photoHasNewComments)
-                                                     name:@"photoHasNewComments"
-                                                   object:_photo];
-	}
-	return self;
-}
-*/
--(void)photoHasNewComments
-{
-    /*
-    for(Comment * comment in [_photo comments]){
-        [comment setIsViewed:YES];
-    }
-    [[_photo captionView]setupCaption];
-    [_commentTableView reloadData];
-    [self scrollToLastCommentAnimated:YES];
-     */
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -171,52 +147,8 @@
     }
     
     return cell;
-/*
-    //set name label text & frame
-    cell.nameLabel.backgroundColor = [UIColor redColor];
-    NSString * userName = comment.userName;
-    CGSize userNameSize = [userName sizeWithFont:[UIFont boldSystemFontOfSize:17]];
-    cell.nameLabel.text = comment.userName;
-    [cell.nameLabel setFrame:CGRectMake(0, 0, userNameSize.width, userNameSize.height)];
-    
-    //set commentLabel text & frame
-    cell.commentLabel.text = comment.comment;
-    [cell.commentLabel setFrame:CGRectMake(cell.nameLabel.frame.size.width, 0, userNameSize.width, userNameSize.height)];
-    
-
-
-    //set attribuedLabel
-    //cell.attributedLabel.text = commentString;
-    //cell.attributedLabel.backgroundColor = [UIColor blueColor];
-    CGSize aLSize;// = [attrStr sizeConstrainedToSize:CGSizeMake(300, 10000)];
-    [cell.attributedLabel setFrame:CGRectMake(10, 0, 300, aLSize.height)];
-    
-    //set dateLabel text & frame
-    //cell.dateLabel.text = comment.timeSincePost;
-    cell.dateLabel.text = commentDate;
-    cell.dateLabel.font = [UIFont systemFontOfSize:13];
-    cell.dateLabel.textColor = [UIColor grayColor];
-    [cell.dateLabel setFrame:CGRectMake(10, aLSize.height, 300, kDateLabelHeight)];
-    
- 
-    if([comment isPlaceHolder]){
-        CGRect rect = cell.contentView.frame;
-        [cell.activityIndicatorView setFrame:CGRectMake(rect.size.width/2, rect.size.height/2, 20, 20)];
-        [cell.activityIndicatorView startAnimating];
-
-        [comment updateFromServerWithBlock:^(BOOL succeeded, NSError *error) {
-            if(succeeded && ![comment isPlaceHolder]){
-                [_commentTableView reloadData];
-                [self scrollToLastCommentAnimated:YES];
-            }
-        }];
-    }else{
-        [cell.activityIndicatorView stopAnimating];
-    }
- 
-    return cell;
- */
 }
+
 -(void)closeCommentViewController
 {
     //closing is a semaphore to prevent 'scrollToLastCommentAnimated' from being called after we are dismissed
@@ -224,6 +156,7 @@
     [self.delegate commentsViewControllerDidCancel:self];
     closing = NO;
 }
+
 -(void)backgroundButtonClicked
 {
     NSLog(@"backgroundButtonClicked");
@@ -355,41 +288,6 @@
         
         [_commentTextField setText:@""];
         [_commentTextField resignFirstResponder];
-        /*
-        [_commentTableView reloadData];
-        
-        NSNotification * note = [NSNotification notificationWithName:@"MWPhotoBrowserReloadData"
-                                                              object:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:note];
-        
-        */
-        
-        /*
-        NSString * comment = _commentTextField.text;
-        NSString * userId = [_delegate userIdForNewComment];
-        Comment * newComment = [[Comment alloc]initWithCommentString:comment userId:userId];
-        [newComment setParentPhoto:_photo];
-        
-        __block UITableView * commentTableView = _commentTableView;
-        __block UITextField * commentTextField = _commentTextField;
-        __block CommentsViewController * me = self;
-        
-        [_photo addComment:newComment withBlock:^(BOOL succeeded, NSError * error) {
-            if(succeeded)
-            {
-                [commentTextField setText:@""];
-                [commentTextField resignFirstResponder];
-                
-                [commentTableView reloadData];
-                
-                NSNotification * note = [NSNotification notificationWithName:@"MWPhotoBrowserReloadData"
-                                                                      object:nil];
-                [[NSNotificationCenter defaultCenter] postNotification:note];
-                
-                [me scrollToLastCommentAnimated:YES];
-            }
-        }];
-         */
     }
 }
 -(void)closeButtonClicked
@@ -401,47 +299,9 @@
     NSLog(@"CommentsViewController willAppear");
 
     [self adjustForOrientation:[UIApplication sharedApplication].statusBarOrientation];
-    /*
-    CGRect commentViewCornerFrame = CGRectMake(self.view.frame.size.width,
-                                               self.view.frame.size.height,
-                                               0,
-                                               0);
-    
-    CGRect commentViewFullFrame = CGRectMake(self.commentView.frame.origin.x,
-                                             self.commentView.frame.origin.y,
-                                             self.commentView.frame.size.width,
-                                             self.commentView.frame.size.height);
-    
-
-    self.commentView.frame = commentViewCornerFrame;
-    self.commentView.frame = commentViewFullFrame;
-*/
-    /*
-    [UIView animateWithDuration:0.3
-                     animations:^
-    {
-        [self.commentView setFrame:commentViewFullFrame];
-    }
-    completion:^(BOOL finished)
-    {
-                         
-        
-    }];
-     */
-    
-    /*
-    for(Comment * comment in [_photo comments]){
-        [comment setIsViewed:YES];
-    }
-     */
 }
 -(void)scrollToLastCommentAnimated:(BOOL)animated
 {
-    NSLog(@"scrollToLastCommentAnimated: %d", animated);
-    
-    //important, prevents us from an infinite loop where we constantly get updates, refresh view,
-    //which calls this function again..
-
     int numberOfRows = [_commentTableView numberOfRowsInSection:0];
     
     if(numberOfRows > 0 && !closing)//bug where if we are in the middle of dismissing this will crash us
@@ -452,25 +312,15 @@
 
         [_commentTableView scrollToRowAtIndexPath:bottomIndexPath
                                  atScrollPosition:UITableViewScrollPositionBottom
-                                         animated:NO];
+                                         animated:NO];//animated crashes sometimes when view is quickly opened/closed
     }
 }
+
 -(void)adjustForOrientation:(UIInterfaceOrientation) orientation
 {
-    NSLog(@"adjusting to orientation: %d", orientation);
     UIInterfaceOrientation currentOrientation = orientation;//[UIApplication sharedApplication].statusBarOrientation;
     BOOL portrait = (currentOrientation == UIInterfaceOrientationPortrait);
-    /*
-    NSLog(@"UIInterfaceOrientationPortrait: %d", UIInterfaceOrientationPortrait);
 
-    NSLog(@"view.frame.origin.x: %f", self.view.frame.origin.x);
-    NSLog(@"view.frame.origin.y: %f", self.view.frame.origin.y);
-    NSLog(@"view.frame.size.width: %f", self.view.frame.size.width);
-    NSLog(@"view.frame.size.height: %f", self.view.frame.size.height);
-    //setup view for portrait
-    float x = self.view.frame.origin.x;
-    float y = self.view.frame.origin.y;
-     */
     float width = self.view.frame.size.width;
     float height = self.view.frame.size.height;
     
@@ -483,26 +333,21 @@
     
     float tabBarAndCaptionHeight = 25;// portrait ? 70 : 60;
     float triangleHeight = 10 + 1; //height of the triangle tail that points at "3 comments"
-    NSLog(@"statusBarHeight: %f", statusBarHeight);
+
     CGRect commentViewFrame = _commentView.frame;
     commentViewFrame.origin.x = 0;
-    NSLog(@"setting origin.x: %f", commentViewFrame.origin.x);
+
     commentViewFrame.origin.y = statusBarHeight;//portrait ? statusBarHeight : statusBarWidth;
-    NSLog(@"commentViewFrame.origin.y: %f", commentViewFrame.origin.y);
+
     commentViewFrame.size.width = width;
-    NSLog(@"keyboardHeight: %f", keyboardHeight);
+
     commentViewFrame.size.height = keyboardIsShowing ? (height - statusBarHeight - keyboardHeight + triangleHeight) : height - tabBarAndCaptionHeight - statusBarHeight;
-    NSLog(@"keyboardIsShowing: %d", keyboardIsShowing);
-    NSLog(@"commentViewFrame.size.height: %f", commentViewFrame.size.height);
+
     _commentView.frame = commentViewFrame;
-    /*
-    CGRect commentTableViewFrame = _commentTableView.frame;
-    commentTableViewFrame.size.height += 132;
-    _commentTableView.frame = commentTableViewFrame;
-    _commentTableView.contentOffset = CGPointMake(0, _commentTableView.contentOffset.y - 132);
-     */
+
     [self scrollToLastCommentAnimated:YES];
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -525,12 +370,6 @@
                      action:@selector(closeButtonClicked)
            forControlEvents:UIControlEventTouchUpInside];
     
-    
-    /*
-    UIPanGestureRecognizer* panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanForScrollView:)];
-    [panGestureRecognizer setDelegate:self];
-    [_commentTableView addGestureRecognizer:panGestureRecognizer];
-    */
     //create rounded corners
     CALayer * layer = [_commentView layer];
     [layer setMasksToBounds:YES];
@@ -548,77 +387,6 @@
     return YES;
 }
 
-/*
-static double startYOffset = 0.0;
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    NSLog(@"didBeginDragging");
-    startYOffset = scrollView.contentOffset.y;
-}
-
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-
-    double deltaYOffset = startYOffset - scrollView.contentOffset.y;
-    
-    NSLog(@"contentOffset: %f,%f", scrollView.contentOffset.x, scrollView.contentOffset.y);
-
-    
-    CGRect commentViewFrame = _commentView.frame;
-    commentViewFrame.origin.y += deltaYOffset * 0.08;
-    [_commentView setFrame:commentViewFrame];
-    
-
-    //CGRect commentTableViewFrame = _commentTableView.frame;
-    //commentTableViewFrame.origin.y -= deltaYOffset;
-    //[_commentTableView setFrame:commentTableViewFrame];
-}
-
--(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-{
-    NSLog(@"didEndDragging");
-}
-*/
-
-/*
-- (void)handlePanForScrollView:(UIPanGestureRecognizer*)recognizer
-{
-    CGPoint translation = [recognizer translationInView:recognizer.view];
-    //CGPoint velocity = [recognizer velocityInView:recognizer.view];
-    
-    NSLog(@"X: %f Y: %f", translation.x, translation.y);
- 
-    double a = _commentTableView.contentOffset.x;
-    NSLog(@"scrollView: %f", a);
-    
-    CGRect frame = _commentView.frame;
-    frame.origin.y = translation.y;
-
-    [_commentView setFrame:frame];
-    
-    
-    CGPoint translation = [recognizer translationInView:recognizer.view];
-    CGPoint velocity = [recognizer velocityInView:recognizer.view];
-    
-    if (recognizer.state == UIGestureRecognizerStateBegan)
-    {
-        
-    }
-    else if (recognizer.state == UIGestureRecognizerStateChanged)
-    {
-        if(translation.y > 70)
-        {
-            [textView resignFirstResponder];
-        }
-    }
-    else if (recognizer.state == UIGestureRecognizerStateEnded)
-    {
-        
-    }
-    //
-}
-*/
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self adjustForOrientation:[UIApplication sharedApplication].statusBarOrientation];

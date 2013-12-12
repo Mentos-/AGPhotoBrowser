@@ -57,7 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B9810FE1858B44B00F04489 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		0B9810FE1858B44B00F04489 /* AGCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCommentsViewController.h; sourceTree = "<group>"; };
 		0B9810FF1858B44B00F04489 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		0B9811001858B44B00F04489 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		0B9811031858B44B00F04489 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				8D3D8ABB184202DE00154B6B /* AGPhotoBrowserZoomableView.m */,
 				0B9811091858B74E00F04489 /* AGComment.h */,
 				0B98110A1858B74E00F04489 /* AGComment.m */,
-				0B9810FE1858B44B00F04489 /* CommentsViewController.h */,
+				0B9810FE1858B44B00F04489 /* AGCommentsViewController.h */,
 				0B9810FF1858B44B00F04489 /* CommentsViewController.m */,
 				0B9811001858B44B00F04489 /* CommentsViewController.xib */,
 				0B9811031858B44B00F04489 /* CommentTableViewCell.h */,

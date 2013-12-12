@@ -1,32 +1,32 @@
 //
-//  CommentsViewController.h
-//  AlbumStore
+//  AGCommentsViewController.h
+//  AGPhotoBrowser
 //
-//  Created by George Rivara on 3/5/13.
-//  Copyright (c) 2013 George Rivara. All rights reserved.
+//  Created by Hellrider on 7/28/13.
+//  Copyright (c) 2013 Andrea Giavatto. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class CommentsViewController;
+@class AGCommentsViewController;
 
-@protocol CommentsViewControllerDelegate <NSObject>
+@protocol AGCommentsViewControllerDelegate <NSObject>
 
-- (NSArray *)commentsViewController:(CommentsViewController *)commentsViewController
+- (NSArray *)commentsViewController:(AGCommentsViewController *)commentsViewController
             commentsForImageAtIndex:(NSInteger)index;
 
-- (void)commentsViewController:(CommentsViewController *)commentsViewController didMakeComment:(NSString *)text;
+- (void)commentsViewController:(AGCommentsViewController *)commentsViewController didMakeComment:(NSString *)text;
 
-- (void)commentsViewControllerDidCancel:(CommentsViewController *)commentsViewController;
+- (void)commentsViewControllerDidCancel:(AGCommentsViewController *)commentsViewController;
 
 @optional
 
-- (void)commentsViewController:(CommentsViewController *)commentsViewController
+- (void)commentsViewController:(AGCommentsViewController *)commentsViewController
          profileImageForUserId:(NSString *)userId
            withCompletionBlock:(void(^)(UIImage *))block;
 @end
 
-@interface CommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
+@interface AGCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     NSArray * _comments;
     
@@ -36,7 +36,7 @@
     BOOL closing;
 }
 
-@property (weak, nonatomic) id<CommentsViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<AGCommentsViewControllerDelegate> delegate;
 
 @property (assign, nonatomic) BOOL showProfilePictureForUserId;
 

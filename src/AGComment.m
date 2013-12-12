@@ -1,9 +1,9 @@
 //
 //  AGComment.m
-//  AlbumStore
+//  AGPhotoBrowser
 //
-//  Created by George Rivara on 3/5/13.
-//  Copyright (c) 2013 George Rivara. All rights reserved.
+//  Created by Hellrider on 7/28/13.
+//  Copyright (c) 2013 Andrea Giavatto. All rights reserved.
 //
 
 #import "AGComment.h"
