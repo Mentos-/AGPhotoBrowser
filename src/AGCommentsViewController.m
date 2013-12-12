@@ -175,7 +175,6 @@
 
 -(void)backgroundButtonClicked
 {
-    NSLog(@"backgroundButtonClicked");
     [self closeCommentViewController];
 }
 
@@ -185,8 +184,6 @@
     
     keyboardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 
-    NSLog(@"keyboard frame raw %@", NSStringFromCGRect(keyboardFrame));
-    
     [self adjustForOrientation:[UIApplication sharedApplication].statusBarOrientation];
     [self scrollToLastCommentAnimated:YES];
     /*
@@ -341,9 +338,9 @@
     
     CGRect statusBarFrame = [self.view.window convertRect:[UIApplication sharedApplication].statusBarFrame toView:self.view];
     float statusBarHeight = statusBarFrame.size.height;//[UIApplication sharedApplication].statusBarFrame.size.height;
-    NSLog(@"statusBarHeight: %f", statusBarHeight);
-    float statusBarWidth = statusBarFrame.size.width;//[UIApplication sharedApplication].statusBarFrame.size.width;
-    NSLog(@"statusBarWidth: %f", statusBarWidth);
+
+    //float statusBarWidth = statusBarFrame.size.width;//[UIApplication sharedApplication].statusBarFrame.size.width;
+
     float keyboardHeight = portrait ? keyboardFrame.size.height : keyboardFrame.size.width;
     
     float tabBarAndCaptionHeight = 25;// portrait ? 70 : 60;

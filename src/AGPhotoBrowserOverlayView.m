@@ -135,7 +135,6 @@
 
 - (void)resetOverlayView
 {
-    NSLog(@"resetOverlayView");
 	if (floor(CGRectGetHeight(self.frame)) != AGPhotoBrowserOverlayInitialHeight) {
 		__block CGRect initialSharingFrame = self.frame;
 		initialSharingFrame.origin.y = round(CGRectGetHeight([UIScreen mainScreen].bounds) - AGPhotoBrowserOverlayInitialHeight);

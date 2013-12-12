@@ -285,7 +285,6 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 
 -(void)showCommentsViewController
 {
-    NSLog(@"showCommentsViewController");
     if(!_commentsViewController)
     {
         _commentsViewController = [[AGCommentsViewController alloc]init];
